@@ -24,3 +24,24 @@
 4.  Create a components folder in your `src` dir and add your components
 5.  Include a styles folder in your `src` dir for your CSS files. You'll need to import there component files to use them
 6.  Don't forget to push your solution to GitHub.
+
+## Notes
+
+- There needs to be form validation, or should I used HTML native form validation?
+- There needs to be a library for unique id
+- We need an object in the App state that is passed to the Form component, that is replaced on submit
+  - we don't need a `onChange` function, because we change from view and edit mode, using the entire Form and not individual inputs
+  - should each fieldset be in a separate fieldset?
+    - i have to separate the fieldsets and then call the components if the user we requires
+      - if the user has went to multiple work places, or schools
+    - it can have an edit on each fieldset
+    - we can pass the have the state have different parts that will get passed to the proper component
+    ```js
+    this.state = {
+      general_information: {},
+      ...
+    }
+    // when passing
+    <GeneralInformation this.form={this.state{general_information}}
+    ...
+    ```
