@@ -16,18 +16,34 @@ export default class Form extends React.Component {
       position_title: "",
       duration_of_hire: "",
       main_tasks: "",
+      read_only: false,
+      button: "Submit",
     };
-    this.changeHandler = this.changeHandler.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  changeHandler = (event) => {
+  handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
-  };
+  }
+
+  handleReadOnly() {
+    this.setState({ read_only: !this.state.read_only });
+    if (this.state.button === "Submit") {
+      this.setState({ button: "Edit" });
+    } else if (this.state.button === "Edit") {
+      this.setState({ button: "Submit" });
+    }
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    this.handleReadOnly();
+    for (const input in this.state) {
+      if (!input.trim()) {
+        return;
+      }
+    }
   }
   render() {
     return (
@@ -40,7 +56,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="first_name">First name:</label>
             <input
-              onChange={this.changeHandler}
+              readOnly={this.state.read_only}
+              onChange={this.handleChange}
               value={this.state.first_name}
               type="text"
               id="first_name"
@@ -51,7 +68,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="last_name">Last name:</label>
             <input
-              onChange={this.changeHandler}
+              readOnly={this.state.read_only}
+              onChange={this.handleChange}
               value={this.state.last_name}
               type="text"
               id="last_name"
@@ -60,7 +78,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="user_email">Email Address:</label>
             <input
-              onChange={this.changeHandler}
+              onChange={this.handleChange}
+              readOnly={this.state.read_only}
               value={this.state.user_email}
               type="email"
               id="user_email"
@@ -70,7 +89,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="phone">Phone Number:</label>
             <input
-              onChange={this.changeHandler}
+              readOnly={this.state.read_only}
+              onChange={this.handleChange}
               value={this.state.phone}
               type="tel"
               id="phone"
@@ -85,7 +105,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="school_name">School Name:</label>
             <input
-              onChange={this.changeHandler}
+              readOnly={this.state.read_only}
+              onChange={this.handleChange}
               value={this.state.school_name}
               type="text"
               id="school_name"
@@ -94,7 +115,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="title_of_study">Title of Study:</label>
             <input
-              onChange={this.changeHandler}
+              readOnly={this.state.read_only}
+              onChange={this.handleChange}
               value={this.state.title_of_study}
               type="text"
               id="title_of_study"
@@ -103,7 +125,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="date_of_study">Date of Study:</label>
             <input
-              onChange={this.changeHandler}
+              onChange={this.handleChange}
+              readOnly={this.state.read_only}
               value={this.state.date_of_study}
               type="date"
               id="date_of_study"
@@ -116,7 +139,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="company_name">Company Name:</label>
             <input
-              onChange={this.changeHandler}
+              onChange={this.handleChange}
+              readOnly={this.state.read_only}
               value={this.state.company_name}
               type="text"
               id="company_name"
@@ -125,7 +149,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="position_title">Postion Title:</label>
             <input
-              onChange={this.changeHandler}
+              onChange={this.handleChange}
+              readOnly={this.state.read_only}
               value={this.state.position_title}
               type="text"
               id="position_title"
@@ -134,7 +159,8 @@ export default class Form extends React.Component {
 
             <label htmlFor="duration_of_hire">Duration of Hire:</label>
             <input
-              onChange={this.changeHandler}
+              onChange={this.handleChange}
+              readOnly={this.state.read_only}
               value={this.state.duration_of_hire}
               type="date"
               id="duration_of_hire"
@@ -143,18 +169,20 @@ export default class Form extends React.Component {
 
             <label htmlFor="main_tasks">Main Tasks:</label>
             <textarea
-              onChange={this.changeHandler}
+              onChange={this.handleChange}
               value={this.state.main_tasks}
+              readOnly={this.state.read_only}
               id="main_tasks"
               name="main_tasks"
               rows="5"
               cols="60"
             ></textarea>
           </fieldset>
+
           <div>
-            {/*this button would change to edit when in edit mode*/}
+            {/*REVIEW button should change on edit after submit*/}
             <button type="submit" className="btn">
-              Submit
+              {this.state.button}
             </button>
           </div>
         </form>
