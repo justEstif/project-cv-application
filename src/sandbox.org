@@ -1,0 +1,48 @@
+
+  #+begin_src js
+function App(props) {
+  const [tasks, setTasks] = useState(props.tasks);
+  const [filter, setFilter] = useState('All');
+  #+end_src
+
+  #+begin_src js
+// NOTE this is mine
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <Form />
+      </div>
+    );
+  }
+}
+  #+end_src
+
+  #+begin_src js
+// NOTE this is the MDN
+function App(props) {
+  const [tasks, setTasks] = useState(props.tasks);
+  const [filter, setFilter] = useState('All');
+  #+end_src
+
+  #+begin_src js
+// NOTE this is the ideal
+
+  #+end_src
+
+- The form has too many responsibilities
+  - try using FP
+- It should only return the form
+- There should be a form handler and a display handler
+
+  #+begin_src js
+
+function GeneralInformation(props){
+  const [inputs, setInputs]} useState(props.userInfo)
+  #+end_src
+- I have to find a way to separate the responsibilities of form and its state to different files
+  - set the state in form, pass it as a prop
+  - set it as a prop in form, and set is as a state in the components
