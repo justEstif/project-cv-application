@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./FormStyle.css";
 export default function Form1(props) {
-  // NOTE the button state
   const [firstName, setFirstName] = useState(props.cvApp.firstName);
   const [lastName, setLastName] = useState(props.cvApp.lastName);
   const [userEmail, setUserEmail] = useState(props.cvApp.userEmail);
@@ -14,18 +13,44 @@ export default function Form1(props) {
   const [durationOfHire, setDurationOfHire] = useState(
     props.cvApp.durationOfHire
   );
+  const [mainTasks, setMainTasks] = useState(props.cvApp.mainTasks);
+
   const [formDisplayClass, setFormClass] = useState("");
   const [overviewDisplayClass, setOverviewClass] = useState("hide");
-  const [mainTasks, setMainTasks] = useState(props.cvApp.mainTasks);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormClass("hide")
-    setOverviewClass("")
+    setFormClass("hide");
+    setOverviewClass("");
   };
+
   const editMode = () => {
-    setFormClass("")
-    setOverviewClass("hide")
-  }
+    setFormClass("");
+    setOverviewClass("hide");
+  };
+
+  const getLabel = (htmlFor, str) => <label htmlFor={htmlFor}>{str}:</label>;
+
+  const getInput = (changeMethod, value, type, rows, cols) => (
+    <input
+      onChange={(e) => changeMethod(e.target.value)}
+      value={value}
+      type={type}
+      id={`${value}`}
+      rows={rows}
+      cols={cols}
+    />
+  );
+
+  const getTextArea = (changeMethod, value, rows, cols) => (
+    <textarea
+      onChange={(e) => changeMethod(e.target.value)}
+      value={value}
+      id={`${value}`}
+      rows={rows}
+      cols={cols}
+    ></textarea>
+  );
   return (
     <div>
       <div className={`formcontainer ${formDisplayClass}`}>
@@ -35,127 +60,58 @@ export default function Form1(props) {
           <fieldset className="fieldset ginfo">
             <legend>General Information</legend>
 
-            <label htmlFor="firstName">First name:</label>
-            <input
-              onChange={(e) => setFirstName(e.target.value)}
-              value={firstName}
-              type="text"
-              id="firstName"
-              name="firstName"
-            />
+            {getLabel("firstName", "First name")}
+            {getInput(setFirstName, firstName, 'text')}
 
-            <label htmlFor="lastName">Last name:</label>
-            <input
-              onChange={(e) => setLastName(e.target.value)}
-              value={lastName}
-              type="text"
-              id="lastName"
-              name="lastName"
-            />
+            {getLabel("lastName", "Last name")}
+            {getInput(setLastName, lastName, 'text')}
 
-            <label htmlFor="userEmail">Email Address:</label>
-            <input
-              onChange={(e) => setUserEmail(e.target.value)}
-              value={userEmail}
-              type="email"
-              id="userEmail"
-              name="userEmail"
-              placeholder="you@example.com"
-            />
+            {getLabel("userEmail", "Email Address:")}
+            {getInput(setUserEmail, userEmail, 'email')}
 
-            <label htmlFor="phone">Phone Number:</label>
-            <input
-              onChange={(e) => setPhone(e.target.value)}
-              value={phone}
-              type="tel"
-              id="phone"
-              name="phone"
-            />
+            {getLabel("phone", "Phone Number:")}
+            {getInput(setPhone, phone, 'tel')}
           </fieldset>
 
           <fieldset className="fieldset eexp">
             <legend>Educational Experience</legend>
 
-            {/* NOTE maybe it could expand based on some kind of choice */}
-            {/*REVIEW What if the has more user than school one/*/}
+            {getLabel("schoolName", "School Name")}
+            {getInput(setSchoolName, schoolName, 'text')}
 
-            <label htmlFor="schoolName">School Name:</label>
-            <input
-              onChange={(e) => setSchoolName(e.target.value)}
-              value={schoolName}
-              type="text"
-              id="schoolName"
-              name="schoolName"
-            />
+            {getLabel("titleOfStudy", "Title of Study")}
+            {getInput(setTitleOfStudy, titleOfStudy, 'text')}
 
-            <label htmlFor="titleOfStudy">Title of Study:</label>
-            <input
-              onChange={(e) => setTitleOfStudy(e.target.value)}
-              value={titleOfStudy}
-              type="text"
-              id="titleOfStudy"
-              name="titleOfStudy"
-            />
+            {getLabel("dateOfStudy", "Date of Study")}
+            {getInput(setDateOfStudy, dateOfStudy, 'date')}
 
-            <label htmlFor="dateOfStudy">Date of Study:</label>
-            <input
-              onChange={(e) => setDateOfStudy(e.target.value)}
-              value={dateOfStudy}
-              type="date"
-              id="dateOfStudy"
-              name="dateOfStudy"
-            />
           </fieldset>
 
           <fieldset className="fieldset pexp">
             <legend>Practical Experience</legend>
 
-            <label htmlFor="companyName">Company Name:</label>
-            <input
-              onChange={(e) => setCompanyName(e.target.value)}
-              value={companyName}
-              type="text"
-              id="companyName"
-              name="companyName"
-            />
+            {getLabel("companyName", "Company Name")}
+            {getInput(setCompanyName, companyName, 'text')}
 
-            <label htmlFor="positionTitle">Postion Title:</label>
-            <input
-              onChange={(e) => setPositionTitle(e.target.value)}
-              value={positionTitle}
-              type="text"
-              id="positionTitle"
-              name="positionTitle"
-            />
+            {getLabel("positionTitle", "Position Title")}
+            {getInput(setPositionTitle, positionTitle, "text")}
 
-            <label htmlFor="durationOfHire">Duration of Hire:</label>
-            <input
-              onChange={(e) => setDurationOfHire(e.target.value)}
-              value={durationOfHire}
-              type="date"
-              id="durationOfHire"
-              name="durationOfHire"
-            />
+            {getLabel("durationHire", "Duration of Hire")}
+            {/* REVIEW  this should be somekind of dropdown menu*/}
+            {getInput(setDurationOfHire, durationOfHire, 'date')}
 
-            <label htmlFor="mainTasks">Main Tasks:</label>
-            <textarea
-              onChange={(e) => setMainTasks(e.target.value)}
-              value={mainTasks}
-              id="mainTasks"
-              name="mainTasks"
-              rows="5"
-              cols="60"
-            ></textarea>
+            {getLabel("mainTasks", "Main Tasks")}
+            {getTextArea(setMainTasks, mainTasks, "5", '60')}
           </fieldset>
 
           <div>
-            {/*TODO button should change on edit after submit*/}
             <button type="submit" className="btn">
               SUBMIT
             </button>
           </div>
         </form>
       </div>
+
       <div className={`${overviewDisplayClass}`}>
         <p>
           {firstName}, {lastName}, {userEmail}, {phone}
