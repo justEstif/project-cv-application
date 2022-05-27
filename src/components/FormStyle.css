@@ -13,3 +13,7 @@ fieldset {
 fieldset {
   grid-template-columns: 1fr 2fr;
 }
+
+.hide {
+  display: none;
+}

@@ -13,10 +13,19 @@ import React from "react";
 // }
 
 export default function Overview(props) {
-  const { firstName, lastName, userEmail, phone } = props.cvApp
-  const { schoolName, titleOfStudy, dateOfStudy } = props.cvApp
-  const { companyName, positionTitle, durationOfHire, mainTasks } =
-    props.cvApp
+  const {
+    firstName,
+    lastName,
+    userEmail,
+    phone,
+    schoolName,
+    titleOfStudy,
+    dateOfStudy,
+    companyName,
+    positionTitle,
+    durationOfHire,
+    mainTasks,
+  } = props.cvApp;
   return (
     <div>
       <p>

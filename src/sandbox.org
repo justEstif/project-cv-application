@@ -39,9 +39,24 @@ function App(props) {
 - There should be a form handler and a display handler
 
   #+begin_src js
-
 function GeneralInformation(props){
   const [inputs, setInputs]} useState(props.userInfo)
+  #+end_src
+
+  #+begin_src js
+// NOTE conditional rendering
+if (isLoggedIn) {
+  button = <LogoutButton onClick={this.handleLogoutClick} />;
+} else {
+  button = <LoginButton onClick={this.handleLoginClick} />;
+}
+
+return (
+  <div>
+    <Greeting isLoggedIn={isLoggedIn} />
+    {button}
+  </div>
+);
   #+end_src
 - I have to find a way to separate the responsibilities of form and its state to different files
   - set the state in form, pass it as a prop

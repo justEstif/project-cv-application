@@ -23,7 +23,6 @@ class App extends Component {
     }
     return (
       <div>
-        <Overview cvApp={cvApp} />
         {/* <Form cvApp={cvApp} /> */}
         <Form1 cvApp={cvApp} />
       </div>
