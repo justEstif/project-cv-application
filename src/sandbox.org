@@ -61,3 +61,24 @@ return (
 - I have to find a way to separate the responsibilities of form and its state to different files
   - set the state in form, pass it as a prop
   - set it as a prop in form, and set is as a state in the components
+
+    #+begin_src js
+            <label htmlFor="firstName">First name:</label>
+  function getJSX(tag){
+    return [`<${tag}>`, `</${tag}`]
+  }
+  function getLabel( string,tag){
+    return
+}
+    #+end_src
+- The next step is to raise the state
+  - take all the values and the change handler in form into a higher components(App)
+
+  - within App:
+    - write the form inputs in state
+
+    - write the change handler and submit handler
+
+  - within Form:
+
+    - write the change handler to take in the props value and on submit to pass it to the props.changeHandler

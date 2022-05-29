@@ -1,18 +1,53 @@
 import React from "react";
 
-// class Overview1 extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   printProps() {
-//     console.log(this.props)
-//   }
-//   render() {
-//     return <div>{this.printProps}</div>;
-//   }
-// }
+export default class Overview extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(e) {
+    console.log(e.target.value);
+    this.props.handleChange(e);
+  }
+  render() {
+    const {
+      firstName,
+      lastName,
+      userEmail,
+      phone,
+      schoolName,
+      titleOfStudy,
+      dateOfStudy,
+      companyName,
+      positionTitle,
+      durationOfHire,
+      mainTasks,
+    } = this.props.cvApp;
 
-export default function Overview(props) {
+    return (
+      <div>
+        <fieldset>
+          <input
+            value={this.props.cvApp.phone}
+            id="phone"
+            onChange={this.handleChange}
+          />
+        </fieldset>
+        <p>
+          {firstName}, {lastName}, {userEmail}, {phone}
+        </p>
+        <p>
+          {schoolName}, {titleOfStudy}, {dateOfStudy}
+        </p>
+        <p>
+          {companyName}, {positionTitle}, {durationOfHire}, {mainTasks}
+        </p>
+      </div>
+    );
+  }
+}
+
+export function Overview1(props) {
   const {
     firstName,
     lastName,
@@ -28,6 +63,9 @@ export default function Overview(props) {
   } = props.cvApp;
   return (
     <div>
+      <fieldset>
+        <input value={phone} onChange={this.handleChange} />
+      </fieldset>
       <p>
         {firstName}, {lastName}, {userEmail}, {phone}
       </p>
