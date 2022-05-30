@@ -25,6 +25,7 @@ export default class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange = (e) =>
     this.setState({
       ...this.state,
@@ -34,7 +35,7 @@ export default class App extends Component {
       },
     });
 
-  handleSubmit = (e) => {
+  handleSubmit = () => {
     if (this.state.classes.overViewClass) {
       this.setState({
         ...this.state,
@@ -53,6 +54,7 @@ export default class App extends Component {
       });
     }
   };
+
   render() {
     return (
       <div className="container">
@@ -64,7 +66,6 @@ export default class App extends Component {
         />
         <Overview
           cvApp={this.state.cvApp}
-          handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           overViewClass={this.state.classes.overViewClass}
         />
