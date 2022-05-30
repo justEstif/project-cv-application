@@ -1,8 +1,11 @@
-.form_container {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  flex-direction: column;
+}
+form {
+  width: 40vw;
 }
 form,
 fieldset {
@@ -12,4 +15,8 @@ fieldset {
 
 fieldset {
   grid-template-columns: 1fr 2fr;
+}
+
+.hide {
+  display: none;
 }
