@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Form from "./components/Form";
-// import Overview from "./components/Overview";
+import Overview from "./components/Overview";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +34,7 @@ class App extends Component {
     return (
       <div>
         <Form cvApp={this.state.cvApp} handleChange={this.handleChange} />
-        {/* <Overview cvApp={this.state.cvApp} handleChange={this.handleChange} /> */}
-        {/* <GeneralInformation cvApp={this.state.cvApp} handleChange={this.handleChange} /> */}
+        <Overview cvApp={this.state.cvApp} handleChange={this.handleChange} />
       </div>
     );
   }

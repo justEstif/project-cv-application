@@ -13,7 +13,7 @@ export default class Overview extends React.Component {
     const {
       firstName,
       lastName,
-      userEmail,
+      email,
       phone,
       schoolName,
       titleOfStudy,
@@ -26,15 +26,8 @@ export default class Overview extends React.Component {
 
     return (
       <div>
-        <fieldset>
-          <input
-            value={this.props.cvApp.phone}
-            id="phone"
-            onChange={this.handleChange}
-          />
-        </fieldset>
         <p>
-          {firstName}, {lastName}, {userEmail}, {phone}
+          {firstName}, {lastName}, {email}, {phone}
         </p>
         <p>
           {schoolName}, {titleOfStudy}, {dateOfStudy}

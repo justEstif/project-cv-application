@@ -1,5 +1,7 @@
 import GeneralInformation from "./GeneralInformation";
 import EducationalExperience from "./EducationalExperience"
+import PracticalExperience from "./PracticalExperience"
+
 import React from "react";
 import "./FormStyle.css";
 export default class Form extends React.Component {
@@ -18,6 +20,10 @@ export default class Form extends React.Component {
           handleChange={this.props.handleChange}
         />
         <EducationalExperience
+          cvApp={this.props.cvApp}
+          handleChange={this.props.handleChange}
+        />
+        <PracticalExperience
           cvApp={this.props.cvApp}
           handleChange={this.props.handleChange}
         />
