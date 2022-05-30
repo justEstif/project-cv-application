@@ -1,4 +1,3 @@
-import "./FormStyle.css";
 import React from "react";
 
 export default class GeneralInformation extends React.Component {
@@ -15,7 +14,7 @@ export default class GeneralInformation extends React.Component {
     const { firstName, lastName, email, phone } = this.props.cvApp;
 
     return (
-      <fieldset className="fieldset ginfo">
+      <fieldset className="fieldset">
         <legend>General Information</legend>
         <label htmlFor="firstName">First Name:</label>
         <input
