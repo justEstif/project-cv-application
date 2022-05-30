@@ -34,7 +34,7 @@ export default class PracticalExperience extends React.Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="durationOfHire">Position Title:</label>
+        <label htmlFor="durationOfHire">Duration of Hire:</label>
         <input
           id="durationOfHire"
           type="text"
