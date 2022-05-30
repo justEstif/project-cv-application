@@ -11,7 +11,7 @@ export default class Form extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted")
+    console.log("View Mode")
     this.props.handleSubmit(e)
   }
   render() {
