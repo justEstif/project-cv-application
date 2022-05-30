@@ -1,6 +1,6 @@
 import GeneralInformation from "./GeneralInformation";
-import EducationalExperience from "./EducationalExperience"
-import PracticalExperience from "./PracticalExperience"
+import EducationalExperience from "./EducationalExperience";
+import PracticalExperience from "./PracticalExperience";
 
 import React from "react";
 import "./FormStyle.css";
@@ -11,10 +11,14 @@ export default class Form extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    console.log("submitted")
+    this.props.handleSubmit(e)
   }
   render() {
+    const { formClass } = this.props
     return (
-      <form>
+      <form onSubmit={this.handleSubmit} className={`${formClass}`}>
+        <h1>CV Application</h1>
         <GeneralInformation
           cvApp={this.props.cvApp}
           handleChange={this.props.handleChange}
@@ -27,6 +31,9 @@ export default class Form extends React.Component {
           cvApp={this.props.cvApp}
           handleChange={this.props.handleChange}
         />
+        <button type="submit" className="btn">
+          Submit
+        </button>
       </form>
     );
   }

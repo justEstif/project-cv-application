@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "./components/Form";
 import Overview from "./components/Overview";
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +18,10 @@ class App extends Component {
         durationOfHire: "",
         mainTasks: "",
       },
+      classes: {
+        formClass: "",
+        overViewClass: "hide",
+      },
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -30,13 +34,41 @@ class App extends Component {
       },
     });
 
+  handleSubmit = (e) => {
+    if (this.state.classes.overViewClass) {
+      this.setState({
+        ...this.state,
+        classes: {
+          formClass: "hide",
+          overViewClass: "",
+        },
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        classes: {
+          formClass: "",
+          overViewClass: "hide",
+        },
+      });
+    }
+  };
   render() {
     return (
-      <div>
-        <Form cvApp={this.state.cvApp} handleChange={this.handleChange} />
-        <Overview cvApp={this.state.cvApp} handleChange={this.handleChange} />
+      <div className="container">
+        <Form
+          cvApp={this.state.cvApp}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          formClass={this.state.classes.formClass}
+        />
+        <Overview
+          cvApp={this.state.cvApp}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          overViewClass={this.state.classes.overViewClass}
+        />
       </div>
     );
   }
 }
-export default App;

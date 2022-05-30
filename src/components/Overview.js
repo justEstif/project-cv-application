@@ -3,11 +3,12 @@ import React from "react";
 export default class Overview extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(e) {
-    console.log(e.target.value);
-    this.props.handleChange(e);
+  handleSubmit(e) {
+    e.preventDefault()
+    console.log("Edit Mode")
+    this.props.handleSubmit(e)
   }
   render() {
     const {
@@ -23,20 +24,25 @@ export default class Overview extends React.Component {
       durationOfHire,
       mainTasks,
     } = this.props.cvApp;
+    const { overViewClass } = this.props
 
     return (
-      <div>
+      <div className={`${overViewClass}`}>
+        <p>Submitted Form</p>
         <p>
-          {firstName}, {lastName}, {email}, {phone}
+          Full Name: {firstName} {lastName}
         </p>
-        <p>
-          {schoolName}, {titleOfStudy}, {dateOfStudy}
-        </p>
-        <p>
-          {companyName}, {positionTitle}, {durationOfHire}, {mainTasks}
-        </p>
+        <p>Email: {email}</p>
+        <p>Phone: {phone}</p>
+        <p>School Attended: {schoolName}</p>
+        <p>Title of Study: {titleOfStudy}</p>
+        <p>Date of Graduation: {dateOfStudy}</p>
+        <p>Previous Name of Employer: {companyName}</p>
+        <p>Previous Position Title: {positionTitle}</p>
+        <p>Duration of Position: {durationOfHire}</p>
+        <p>Previous Responsibilities: {mainTasks}</p>
+        <button onClick={this.handleSubmit}>Edit</button>
       </div>
     );
   }
 }
-
