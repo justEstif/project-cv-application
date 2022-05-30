@@ -3,7 +3,8 @@ import EducationalExperience from "./EducationalExperience";
 import PracticalExperience from "./PracticalExperience";
 
 import React from "react";
-import "./FormStyle.css";
+import "./styles/FormStyle.css"
+
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +12,6 @@ export default class Form extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log("View Mode")
     this.props.handleSubmit(e)
   }
   render() {

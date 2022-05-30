@@ -30,12 +30,19 @@
 - There needs to be form validation, or should I used HTML native form validation?
 - There needs to be a library for unique id
 - We need an object in the App state that is passed to the Form component, that is replaced on submit
-  - should each fieldset be in a separate fieldset?
-    - i have to separate the fieldsets and then call the components if the user we requires
+  - should each field-set be in a separate field-set?
+    - i have to separate the field-sets and then call the components if the user we requires
       - if the user has went to multiple work places, or schools
-    - it can have an edit on each fieldset
+    - it can have an edit on each field-set
     - we can pass the have the state have different parts that will get passed to the proper component
 - The View mode and the edit mode:
   1. switch using css classes
   - on submit, change the class of the Form and Overview
   2. switch by re-rendering components
+
+## Final Notes
+
+- I dived in to the use of state and props in this project. I started by only using Form component, but I realized that I would have to find a way to share the changes to Overview as well.
+  - In order to do this, I learned that I had to raise the state,( which is similar to raising the abstraction one more level so that methods could work)
+  - Once I achieved this, I decided to separate the field-sets into their own components.
+- Although the UI is lacking, I have completed all the requirements for this project.
