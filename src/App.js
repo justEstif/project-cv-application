@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Form1 from "./components/Form1";
-import Overview from "./components/Overview";
-import GeneralInformation from "./components/GeneralInformation";
+import Form from "./components/Form";
+// import Overview from "./components/Overview";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -34,10 +33,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Form cvApp={cvApp} /> */}
-        <Form1 cvApp={this.state.cvApp} />
-        <Overview cvApp={this.state.cvApp} handleChange={this.handleChange} />
-        <GeneralInformation cvApp={this.state.cvApp} handleChange={this.handleChange} />
+        <Form cvApp={this.state.cvApp} handleChange={this.handleChange} />
+        {/* <Overview cvApp={this.state.cvApp} handleChange={this.handleChange} /> */}
+        {/* <GeneralInformation cvApp={this.state.cvApp} handleChange={this.handleChange} /> */}
       </div>
     );
   }
