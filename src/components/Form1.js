@@ -31,7 +31,6 @@ export default function Form1(props) {
 
   const getLabel = (htmlFor, str) => <label htmlFor={htmlFor}>{str}:</label>;
 
-  // value and htmlFor are the same
   const getInput = (changeMethod, value, type, rows, cols) => (
     <input
       onChange={(e) => changeMethod(e.target.value)}

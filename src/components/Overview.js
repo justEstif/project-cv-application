@@ -47,34 +47,3 @@ export default class Overview extends React.Component {
   }
 }
 
-export function Overview1(props) {
-  const {
-    firstName,
-    lastName,
-    userEmail,
-    phone,
-    schoolName,
-    titleOfStudy,
-    dateOfStudy,
-    companyName,
-    positionTitle,
-    durationOfHire,
-    mainTasks,
-  } = props.cvApp;
-  return (
-    <div>
-      <fieldset>
-        <input value={phone} onChange={this.handleChange} />
-      </fieldset>
-      <p>
-        {firstName}, {lastName}, {userEmail}, {phone}
-      </p>
-      <p>
-        {schoolName}, {titleOfStudy}, {dateOfStudy}
-      </p>
-      <p>
-        {companyName}, {positionTitle}, {durationOfHire}, {mainTasks}
-      </p>
-    </div>
-  );
-}

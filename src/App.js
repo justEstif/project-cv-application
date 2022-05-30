@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Form from "./components/Form";
 import Form1 from "./components/Form1";
 import Overview from "./components/Overview";
+import GeneralInformation from "./components/GeneralInformation";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +9,7 @@ class App extends Component {
       cvApp: {
         firstName: "",
         lastName: "",
-        userEmail: "",
+        email: "",
         phone: "",
         schoolName: "",
         titleOfStudy: "",
@@ -37,6 +37,7 @@ class App extends Component {
         {/* <Form cvApp={cvApp} /> */}
         <Form1 cvApp={this.state.cvApp} />
         <Overview cvApp={this.state.cvApp} handleChange={this.handleChange} />
+        <GeneralInformation cvApp={this.state.cvApp} handleChange={this.handleChange} />
       </div>
     );
   }
