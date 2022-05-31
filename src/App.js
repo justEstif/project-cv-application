@@ -1,75 +1,56 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Form from "./components/Form";
 import Overview from "./components/Overview";
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cvApp: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        schoolName: "",
-        titleOfStudy: "",
-        dateOfStudy: "",
-        companyName: "",
-        positionTitle: "",
-        durationOfHire: "",
-        mainTasks: "",
-      },
-      classes: {
-        formClass: "",
-        overViewClass: "hide",
-      },
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+export default function App() {
+  const [cvApp, setCvApp] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    schoolName: "",
+    titleOfStudy: "",
+    dateOfStudy: "",
+    companyName: "",
+    positionTitle: "",
+    durationOfHire: "",
+    mainTasks: "",
+  });
+  const [classes, setClasses] = useState({
+    formClass: "",
+    overViewClass: "hide",
+  });
 
-  handleChange = (e) =>
-    this.setState({
-      ...this.state,
-      cvApp: {
-        ...this.state.cvApp,
-        [e.target.id]: e.target.value,
-      },
+  const handleChange = (e) => {
+    setCvApp((prevState) => {
+      return { ...prevState, [e.target.id]: e.target.value };
     });
-
-  handleSubmit = () => {
-    if (this.state.classes.overViewClass) {
-      this.setState({
-        ...this.state,
-        classes: {
-          formClass: "hide",
-          overViewClass: "",
-        },
+  };
+  const handleSubmit = () => {
+    if (classes.overViewClass) {
+      setClasses({
+        formClass: "hide",
+        overViewClass: "",
       });
     } else {
-      this.setState({
-        ...this.state,
-        classes: {
-          formClass: "",
-          overViewClass: "hide",
-        },
+      setClasses({
+        formClass: "",
+        overViewClass: "hide",
       });
     }
   };
-
-  render() {
-    return (
-      <div className="container">
-        <Form
-          cvApp={this.state.cvApp}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          formClass={this.state.classes.formClass}
-        />
-        <Overview
-          cvApp={this.state.cvApp}
-          handleSubmit={this.handleSubmit}
-          overViewClass={this.state.classes.overViewClass}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="container">
+      <Form
+        cvApp={cvApp}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        formClass={classes.formClass}
+      />
+      <Overview
+        cvApp={cvApp}
+        handleSubmit={handleSubmit}
+        overViewClass={classes.overViewClass}
+      />
+    </div>
+  );
 }
