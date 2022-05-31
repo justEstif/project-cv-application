@@ -1,53 +1,43 @@
-import React from "react";
+export default function GeneralInformation(props) {
+  const handleChange = (e) => props.handleChange(e);
 
-export default class GeneralInformation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(e) {
-    console.log(e.target.id);
-    console.log(e.target.value);
-    this.props.handleChange(e);
-  }
-  render() {
-    const { firstName, lastName, email, phone } = this.props.cvApp;
+  const { firstName, lastName, email, phone } = props.cvApp;
 
-    return (
-      <fieldset className="fieldset">
-        <legend>General Information</legend>
-        <label htmlFor="firstName">First Name:</label>
-        <input
-          id="firstName"
-          value={firstName}
-          type="text"
-          onChange={this.handleChange}
-        ></input>
+  return (
+    <fieldset className="fieldset">
+      <legend>General Information</legend>
+      <label htmlFor="firstName">First Name:</label>
+      <input
+        id="firstName"
+        value={firstName}
+        type="text"
+        onChange={handleChange}
+      ></input>
 
-        <label htmlFor="lastName">Last Name:</label>
-        <input
-          id="lastName"
-          value={lastName}
-          type="text"
-          onChange={this.handleChange}
-        />
+      <label htmlFor="lastName">Last Name:</label>
+      <input
+        id="lastName"
+        value={lastName}
+        type="text"
+        onChange={handleChange}
+      />
 
-        <label htmlFor="email">Email Address:</label>
-        <input
-          id="email"
-          value={email}
-          type="text"
-          onChange={this.handleChange}
-        />
+      <label htmlFor="email">Email Address:</label>
+      <input
+        id="email"
+        value={email}
+        type="text"
+        onChange={handleChange}
+      />
 
-        <label htmlFor="phone">Phone Number:</label>
-        <input
-          id="phone"
-          value={phone}
-          type="tel"
-          onChange={this.handleChange}
-        />
-      </fieldset>
-    );
-  }
+      <label htmlFor="phone">Phone Number:</label>
+      <input
+        id="phone"
+        value={phone}
+        type="tel"
+        onChange={handleChange}
+      />
+    </fieldset>
+  );
 }
+

@@ -1,55 +1,42 @@
-import React from 'react'
+export default function PracticalExperience(props) {
+  const handleChange = (e) => props.handleChange(e);
 
-export default class PracticalExperience extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(e) {
-    console.log(e.target.id);
-    console.log(e.target.value);
-    this.props.handleChange(e);
-  }
-  render() {
-    const { companyName, positionTitle, durationOfHire, mainTasks } =
-      this.props.cvApp;
+  const { companyName, positionTitle, durationOfHire, mainTasks } = props.cvApp;
+  return (
+    <fieldset className="fieldset">
+      <legend>Practical Experience</legend>
 
-    return (
-      <fieldset className="fieldset">
-        <legend>Practical Experience</legend>
+      <label htmlFor="companyName">Company Name:</label>
+      <input
+        id="companyName"
+        type="text"
+        value={companyName}
+        onChange={handleChange}
+      />
 
-        <label htmlFor="companyName">Company Name:</label>
-        <input
-          id="companyName"
-          type="text"
-          value={companyName}
-          onChange={this.handleChange}
-        />
+      <label htmlFor="positionTitle">Position Title:</label>
+      <input
+        id="positionTitle"
+        type="text"
+        value={positionTitle}
+        onChange={handleChange}
+      />
 
-        <label htmlFor="positionTitle">Position Title:</label>
-        <input
-          id="positionTitle"
-          type="text"
-          value={positionTitle}
-          onChange={this.handleChange}
-        />
-
-        <label htmlFor="durationOfHire">Duration of Hire:</label>
-        <input
-          id="durationOfHire"
-          type="text"
-          value={durationOfHire}
-          onChange={this.handleChange}
-        />
-        <label htmlFor="mainTasks">Main Tasks</label>
-        <textarea
-          id="mainTasks"
-          value={mainTasks}
-          rows="5"
-          cols="60"
-          onChange={this.handleChange}
-        />
-      </fieldset>
-    );
-  }
+      <label htmlFor="durationOfHire">Duration of Hire:</label>
+      <input
+        id="durationOfHire"
+        type="text"
+        value={durationOfHire}
+        onChange={handleChange}
+      />
+      <label htmlFor="mainTasks">Main Tasks</label>
+      <textarea
+        id="mainTasks"
+        value={mainTasks}
+        rows="5"
+        cols="60"
+        onChange={handleChange}
+      />
+    </fieldset>
+  );
 }
